@@ -1,0 +1,408 @@
+@import "./fonts/fonts";
+@import "./bootstrap";
+
+@mixin basic-heading {
+	font-weight: 700;
+	color: $dark;
+	margin: 0;
+	font-style: normal;
+}
+
+h1 {
+	@include basic-heading;
+	font-size: 85px;
+	line-height: 85px;
+	letter-spacing: -1.7px;
+}
+
+h2 {
+	@include basic-heading;
+	font-size: 50px;
+	line-height: 50px;
+	letter-spacing: -1px;
+}
+
+h3 {
+	@include basic-heading;
+	color: $primary;
+	font-size: 40px;
+	line-height: 50px;
+	letter-spacing: -0.4px;
+}
+
+h4 {
+	@include basic-heading;
+	color: $primary;
+	font-size: 32px;
+	line-height: 30px;
+	letter-spacing: -0.3px;
+}
+
+h5 {
+	@include basic-heading;
+	color: $dark;
+	font-size: 18px;
+	line-height: 18px;
+}
+
+@mixin basic-subtitle {
+	color: $primary;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 30px;
+	letter-spacing: -0.24px;
+}
+
+.subtitle {
+	@include basic-subtitle;
+}
+
+@mixin slide($gap, $pad-x, $pad-y, $align: flex-start, $height: initial) {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: $align;
+	gap: $gap;
+	padding: $pad-y $pad-x;
+	min-height: $height;
+}
+
+@mixin sp-container($color: transparent) {
+	background-color: $color;
+	z-index: 0;
+	position: relative;
+}
+
+@mixin button($pad: 35px) {
+	width: fit-content;
+	padding: 15px $pad;
+	font-size: 18px;
+}
+
+@mixin bg-art($dir) {
+	position: absolute;
+	z-index: -1;
+	height: if($dir == "br", 70%, 60%);
+	bottom: if($dir == "br", 0, initial);
+	right: if($dir == "l", initial, 0);
+	left: if($dir == "l", 0, initial);
+	top: if($dir == "br", initial, 50%);
+	transform: if($dir == "br", initial, translate(0, -50%));
+
+	@media screen and (max-width: 1200px) {
+		display: none;
+	}
+}
+
+hr {
+	border: 1.5px solid $dark;
+	width: 3rem;
+}
+
+.company-logo {
+	width: 100%;
+	max-width: 200px;
+}
+
+.offwhite-bg {
+	@include sp-container(#fbfafa);
+}
+
+.yellow-bg {
+	@include sp-container(#ffc351);
+
+	h2 {
+		font-size: 60px;
+		color: $white;
+	}
+
+	div {
+		color: $white;
+		font-family: "Roboto" sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 24px;
+		letter-spacing: -0.24px;
+	}
+}
+
+.basic-slide {
+	@include slide(34px, 124px, 60px);
+}
+
+.background-art {
+	@include bg-art("br");
+}
+.fixed-slide {
+	@include slide(34px, 124px, 60px, flex-start, 714px);
+
+	.btn {
+		@include button(20px);
+	}
+}
+
+// Navbar
+.navbar-collapse {
+	justify-content: flex-end;
+}
+
+.navbar {
+	padding: 40px 120px;
+
+	.navbar-nav {
+		display: flex;
+		gap: 40px;
+		justify-content: center;
+		align-items: center;
+
+		.nav-item {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.navbar-button {
+		@include button;
+	}
+}
+
+// Quote Slide
+.quote-slide {
+	@include slide(0, 186px, 140px, center);
+
+	flex-direction: row;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	gap: 33px;
+
+	img:last-child {
+		transform: scale(-1, 1);
+	}
+}
+
+// Bullet Slide
+.bullet-slide {
+	@include slide(34px, 124px, 60px, flex-start, 714px);
+	gap: 80px;
+
+	.bullet-slide-row-1 {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+
+		.bullet-slide-text {
+			display: flex;
+			flex-direction: column;
+			gap: 32px;
+		}
+
+		.bullet-icon {
+			width: 90px;
+			margin: 20px;
+		}
+	}
+
+	.bullet-slide-row-2 {
+		display: flex;
+		width: 100%;
+		gap: 95px;
+
+		.subtitle {
+			color: $dark;
+			font-size: 30px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 38px;
+			letter-spacing: -0.3px;
+		}
+	}
+}
+
+// Card Slide
+.card-slide {
+	@include slide(55px, 120px, 140px, center);
+	padding-bottom: 0;
+
+	.row {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+
+		.work-card {
+			margin: 17.5px;
+			padding: 50px 100px;
+			border-radius: 30px;
+			box-shadow: 0px 8px 35px 0px rgba(187, 169, 142, 0.15);
+			max-width: 565px;
+			border: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 25px;
+
+			.card-text {
+				color: $dark;
+				text-align: center;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 20px;
+				letter-spacing: -0.16px;
+				height: 100%;
+			}
+
+			.btn {
+				@include button(30px);
+			}
+		}
+	}
+}
+
+// Hiring Slide
+.hiring-slide {
+	@include slide(30px, 300px, 140px, center);
+	text-align: center;
+
+	.hiring-button {
+		@include button;
+	}
+}
+
+#hiring {
+	img:first-child {
+		@include bg-art("l");
+	}
+
+	img:last-child {
+		@include bg-art("r");
+	}
+}
+
+// Message Form
+.message-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	background-color: #f3f3f3;
+	box-shadow: 0px 8px 35px 0px rgba(187, 169, 142, 0.15);
+	width: 100%;
+	max-width: 512px;
+	border-radius: 10px;
+	padding: 40px;
+	padding-top: 70px;
+	align-items: center;
+
+	div {
+		width: 100%;
+	}
+
+	.form-control {
+		height: 54px;
+		padding: 18px;
+		border-radius: 10px;
+		background: $white;
+		box-shadow: 0px 8px 35px 0px rgba(187, 169, 142, 0.15);
+	}
+
+	.form-control::placeholder {
+		color: #939393;
+		font-family: "Roboto" sans-serif;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 18px;
+	}
+
+	.message-form-message {
+		height: 270px;
+	}
+
+	.message-form-button {
+		@include button;
+	}
+}
+
+// Footer
+.footer {
+	@include slide(90px, 120px, 90px, center);
+	color: #939393;
+	font-family: Circular Std;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 30px;
+
+	a {
+		color: $secondary;
+		text-decoration: none;
+	}
+
+	.row {
+		width: 100%;
+		gap: 90px;
+	}
+
+	.footer-module {
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 11px;
+		width: fit-content;
+		flex-grow: 1;
+	}
+
+	.footer-module:first-child {
+		justify-content: space-between;
+	}
+
+	.company-logo {
+		max-width: 180px;
+	}
+}
+
+// Chatbot
+.chat {
+	position: fixed;
+	bottom: 100px;
+	right: 125px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	opacity: 0.77;
+
+	.chat-sec {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 65px;
+		cursor: pointer;
+
+		.chat-bubble {
+			background-color: $secondary;
+			color: $white;
+			border-radius: 28px 28px 0px 28px;
+			font-family: "Roboto", sans-serif;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 14px;
+			padding: 10px 20px;
+		}
+	}
+
+	.chat-icon {
+		width: 96px;
+		border-radius: 100px;
+		border-width: 9px;
+		border-style: solid;
+		border-color: $white;
+		box-sizing: content-box;
+		height: auto;
+	}
+}

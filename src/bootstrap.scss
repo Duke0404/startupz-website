@@ -1,0 +1,46 @@
+$primary: #fb8958;
+$secondary: #46b8c8;
+$dark: #3d4f5c;
+
+$font-family-sans-serif: "Circular Std", sans-serif;
+
+$btn-border-radius: 50px;
+
+$spacer: 1rem;
+$spacers: (
+	0: 0,
+	1: $spacer * 0.25,
+	2: $spacer * 0.5,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+	6: $spacer * 5,
+	7: $spacer * 7.5
+);
+
+$border-widths: (
+	1: 1px,
+	2: 2px,
+	3: 3px,
+	4: 4px,
+	5: 5px,
+	10: 10px
+);
+
+$box-shadow: 0 0.5rem 1rem rgba(black, 0.08);
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.container {
+	padding: 0;
+	position: relative;
+}
+
+.container-fluid {
+	padding: 0;
+	position: relative;
+}
+
+.btn-secondary {
+	color: white;
+}
