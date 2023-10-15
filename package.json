@@ -1,6 +1,6 @@
 {
 	"name": "startupz-website",
-	"homepage": "https://duke0404.github.io/startupz-website/",
+	"homepage": ".",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
